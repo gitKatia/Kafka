@@ -1,11 +1,17 @@
 package com.kat.aio.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kat.aio.services.ZookeeperService;
+
 @Controller
 public class ClusterController {
+	
+	@Autowired
+	ZookeeperService zookeeperService;
 	
 	@RequestMapping(value="/brokers", method=RequestMethod.GET)
 	public String getBrokers(){
@@ -14,6 +20,9 @@ public class ClusterController {
 	
 	@RequestMapping(value="/zookeepers", method=RequestMethod.GET)
 	public String zookeeper(){
+		//TODO Remove; this is just for Testing
+		//zookeeperService.startZookeeper("zookeeper.properties");
+		zookeeperService.stopZookeeper("zookeeper.properties");
 		return "zookeeper";
 	}
 
