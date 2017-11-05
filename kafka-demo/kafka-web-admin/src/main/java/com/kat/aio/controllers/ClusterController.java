@@ -5,25 +5,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kat.aio.services.BrokerService;
-import com.kat.aio.services.ZookeeperService;
+import com.kat.aio.model.ServerType;
+import com.kat.aio.services.ServerService;
 
 @Controller
 public class ClusterController {
 
 	@Autowired
-	ZookeeperService zookeeperService;
-
-	@Autowired
-	BrokerService brokerService;
+	private ServerService serverService;
 
 	@RequestMapping(value = "/brokers", method = RequestMethod.GET)
 	public String getBrokers() {
 
 		// TODO Remove; this is just for Testing
-		brokerService.startBroker("server.properties");
-		brokerService.startBroker("server1.properties");
-		brokerService.startBroker("server2.properties");
+		String type = ServerType.BROKER.type();
+		serverService.startServer("server.properties", type);
+		serverService.startServer("server1.properties", type);
+		serverService.startServer("server2.properties", type);
 		
 		return "brokers";
 	}
@@ -31,8 +29,9 @@ public class ClusterController {
 	@RequestMapping(value = "/zookeepers", method = RequestMethod.GET)
 	public String zookeeper() {
 		// TODO Remove; this is just for Testing
-		zookeeperService.startZookeeper("zookeeper.properties");
-		// zookeeperService.stopZookeeper("zookeeper.properties");
+		String type = ServerType.ZOOKEEPER.type();
+		serverService.startServer("zookeeper.properties", type);
+		// startService.stopServer("zookeeper.properties", type);
 
 		return "zookeeper";
 	}
