@@ -30,8 +30,8 @@ public class ClusterController {
 	public String zookeeper() {
 		// TODO Remove; this is just for Testing
 		String type = ServerType.ZOOKEEPER.type();
-		serverService.startServer("zookeeper.properties", type);
-		// startService.stopServer("zookeeper.properties", type);
+		//serverService.startServer("zookeeper.properties", type);
+		serverService.stopServer("zookeeper.properties", type);
 
 		return "zookeeper";
 	}

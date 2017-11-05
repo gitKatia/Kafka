@@ -43,6 +43,14 @@ public class ServerService implements IServerService {
 		}
 
 	}
+
+	@Override
+	public boolean testServerStatus(String configFileName, String type) {
+		
+		return false;
+	}
+	
+	
 	
 
 }
