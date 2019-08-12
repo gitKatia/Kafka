@@ -1,4 +1,4 @@
-package com.kat.aio.model;
+package com.kat.kafka.model;
 
 /**
  * @author ki

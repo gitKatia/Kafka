@@ -1,18 +1,22 @@
-package com.kat.aio.controllers;
+package com.kat.kafka.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kat.aio.model.ServerType;
-import com.kat.aio.services.ServerService;
+import com.kat.kafka.model.ServerType;
+import com.kat.kafka.services.ServerServiceImpl;
 
+/**
+ * @author ki
+ *
+ */
 @Controller
 public class ClusterController {
 
 	@Autowired
-	private ServerService serverService;
+	private ServerServiceImpl serverService;
 
 	@RequestMapping(value = "/brokers", method = RequestMethod.GET)
 	public String getBrokers() {
@@ -26,12 +30,12 @@ public class ClusterController {
 		return "brokers";
 	}
 
-	@RequestMapping(value = "/zookeepers", method = RequestMethod.GET)
+	@RequestMapping(value = "/zookeeper", method = RequestMethod.GET)
 	public String zookeeper() {
 		// TODO Remove; this is just for Testing
 		String type = ServerType.ZOOKEEPER.type();
-		//serverService.startServer("zookeeper.properties", type);
-		serverService.stopServer("zookeeper.properties", type);
+		serverService.startServer("zookeeper.properties", type);
+		//serverService.stopServer("zookeeper.properties", type);
 
 		return "zookeeper";
 	}

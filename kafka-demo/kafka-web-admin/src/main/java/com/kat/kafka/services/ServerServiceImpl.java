@@ -1,17 +1,17 @@
-package com.kat.aio.services;
+package com.kat.kafka.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kat.aio.model.ServerType;
-import com.kat.aio.services.util.ServerServiceUtil;
+import com.kat.kafka.model.ServerType;
+import com.kat.kafka.services.util.ServerServiceUtil;
 
 /**
  * @author ki
  *
  */
 @Service
-public class ServerService implements IServerService {
+public class ServerServiceImpl implements ServerService {
 	
 	@Autowired
 	private ServerServiceUtil serverServiceUtil;
@@ -45,7 +45,7 @@ public class ServerService implements IServerService {
 	}
 
 	@Override
-	public boolean testServerStatus(String configFileName, String type) {
+	public boolean checkServerStatus(String configFileName, String type) {
 		
 		return false;
 	}

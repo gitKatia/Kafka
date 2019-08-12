@@ -1,4 +1,4 @@
-package com.kat.aio.controllers;
+package com.kat.kafka.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

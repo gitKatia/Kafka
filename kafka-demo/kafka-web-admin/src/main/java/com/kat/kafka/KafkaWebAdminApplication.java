@@ -1,4 +1,4 @@
-package com.kat.aio;
+package com.kat.kafka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
