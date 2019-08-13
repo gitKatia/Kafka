@@ -8,8 +8,9 @@
 <script src="webjars/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-	<div class="container" th:fragment="zookeepersGrid">
-		<p>Html for managing zookeepers(only one!)</p>
+	<div class="container" th:fragment="clusterContent">
+		<p>Start zookeeper and brokers</p>
+		<a th:href="@{/cluster?action=start}">Start Cluster</a>
 	</div>
 </body>
 </html>

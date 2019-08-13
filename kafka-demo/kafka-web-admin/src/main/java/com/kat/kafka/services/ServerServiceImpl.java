@@ -17,11 +17,11 @@ public class ServerServiceImpl implements ServerService {
 	private ServerServiceUtil serverServiceUtil;
 
 	@Override
-	public void startServer(String configFileName, String type) {
+	public void startServer(String configFileName, ServerType type) {
 		
-		if(type.equals(ServerType.ZOOKEEPER.type())){
+		if(type == ServerType.ZOOKEEPER){
 			serverServiceUtil.executeCommand("zookeeper.server.start.script", configFileName);
-		} else if(type.equals(ServerType.BROKER.type())) {
+		} else if(type == ServerType.BROKER) {
 			serverServiceUtil.executeCommand("kafka.server.start.script", configFileName);
 		} else {
 			// Should add logging
@@ -31,11 +31,11 @@ public class ServerServiceImpl implements ServerService {
 	}
 
 	@Override
-	public void stopServer(String configFileName, String type) {
+	public void stopServer(String configFileName, ServerType type) {
 		
-		if(type.equals(ServerType.ZOOKEEPER.type())){
+		if(type == ServerType.ZOOKEEPER){
 			serverServiceUtil.executeCommand("zookeeper.server.stop.script", configFileName);
-		} else if(type.equals(ServerType.BROKER.type())) {
+		} else if(type == ServerType.BROKER) {
 			serverServiceUtil.executeCommand("kafka.server.stop.script", configFileName);
 		} else {
 			// Should add logging
@@ -45,7 +45,7 @@ public class ServerServiceImpl implements ServerService {
 	}
 
 	@Override
-	public boolean checkServerStatus(String configFileName, String type) {
+	public boolean checkServerStatus(String configFileName, ServerType type) {
 		
 		return false;
 	}
